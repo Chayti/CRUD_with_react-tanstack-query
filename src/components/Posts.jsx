@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const Posts = () => {
 
-    const postQuery = useQuery({
+    const { data: posts, isLoading, isError } = useQuery({
         queryKey: ['posts'],
         queryFn: async () => {
             const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
@@ -13,8 +13,8 @@ const Posts = () => {
         retry: 3,
     })
 
-    if (postQuery.isLoading) return (<h1>Loading....</h1>)
-    if (postQuery.isError) return (<h1>Error loading data!!!</h1>)
+    if (isLoading) return (<h1>Loading....</h1>)
+    if (isError) return (<h1>Error loading data!!!</h1>)
 
     return (
         <div className="overflow-x-auto my-20 w-4/5 mx-auto">
@@ -27,7 +27,7 @@ const Posts = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {postQuery?.data?.map((post) => <tr key={post.id}>
+                    {posts?.map((post) => <tr key={post.id}>
                         <th>{post.id}</th>
                         <td>{post.title}</td>
                         <th>{post.body}</th>
