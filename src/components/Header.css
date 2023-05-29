@@ -1,0 +1,18 @@
+.header{
+    box-shadow: inset 5px 5px 60px turquoise;
+}
+
+.active-style a.active{
+   background-color: transparent;
+   color: teal;
+   text-decoration: underline;
+}
+.active-style a:focus{
+    background-color: transparent;
+    color: teal;
+}
+.active-style button, li{
+    font-weight:bolder;
+    color: teal;
+    font-size: larger;
+}
